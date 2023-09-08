@@ -7,7 +7,12 @@ public class S_PlayerStats : S_CharacterStats, IDamage
 {
 
     [SerializeField] Slider healthbar;
-    private float health;
+    
+
+    private void Awake()
+    {
+        healthbar.value = health;
+    }
 
     public void DealDamage(float incomingDamage, string damageType)
     {
@@ -17,7 +22,7 @@ public class S_PlayerStats : S_CharacterStats, IDamage
             incomingDamage = incomingDamage * defense;      
         }    
 
-        health -= incomingDamage;
+        health -= (int)incomingDamage;
         healthbar.value = health / maxHealth; 
         if(health <= 0)
         {

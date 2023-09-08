@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,22 +20,36 @@ public class S_Player : MonoBehaviour
 
 
     private Camera mainCamera;
-    //Input System 
-    public PlayerInputs playerControls;
-    private InputAction move;   
-    private InputAction look;
-    private InputAction fire;
-    
 
+    //Input System 
+    private PlayerInput playerInput;
+    public PlayerInputs playerControls;
+    public int controlScheme;
+
+    [System.NonSerialized] public InputAction move;
+    [System.NonSerialized] public InputAction look;
+    private InputAction fire;
+   
     // ___________________________________________
     private void Awake()
     {
+        controlScheme = 1;
         mainCamera = Camera.main;
-        playerControls = new PlayerInputs();
+        playerInput = GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody>();
+
+     
+        move = playerInput.actions["Keyboard Movement Primary"];    
+        look = playerInput.actions["Look Primary"];
+        fire = playerInput.actions["Fire"];
+        fire.performed += Fire;
+
+        // Need to disable only the TFGH/WASD/Controller inputs of move rather than the entire thing. 
     }
+    /*
+     Old code from when I was using generate C# class rather than the input component itself. 
     private void OnEnable()
-    {
+    {   
         move = playerControls.Player.Move;
         move.Enable();
 
@@ -51,7 +66,7 @@ public class S_Player : MonoBehaviour
         move.Disable();
         look.Disable();
         fire.Disable();
-    }
+    }*/
 
     // ___________________________________________
 
@@ -59,6 +74,7 @@ public class S_Player : MonoBehaviour
 
     void FixedUpdate()
     {
+     
         //Camera Control
         lookDirection = look.ReadValue<Vector2>();
         playerRotation.x += lookDirection.x * mouseSensitivity * Time.deltaTime;
@@ -69,17 +85,12 @@ public class S_Player : MonoBehaviour
         mainCamera.transform.rotation = Quaternion.Euler(playerRotation.y, playerRotation.x, 0f);
        
 
-
+        
         //Movement
         playerVelocity = GetMovementInput();
         PlayerMove();
         //Vector3 movement = mainCamera.transform.right * moveDirection.x + mainCamera.transform.forward * moveDirection.y;
-        rb.AddRelativeForce(playerVelocity);
-
-
-        
-        
-        
+        rb.AddRelativeForce(playerVelocity);  
     }
 
     private Vector3 GetMovementInput()
@@ -88,8 +99,8 @@ public class S_Player : MonoBehaviour
         return new Vector3(moveDirection.x, 0f, moveDirection.y);
     }
     private void PlayerMove()
-    {
-       playerVelocity = (new Vector3(playerVelocity.x * playerSpeed, playerVelocity.y, playerVelocity.z * playerSpeed));
+    {        
+        playerVelocity = (new Vector3(playerVelocity.x * playerSpeed, playerVelocity.y, playerVelocity.z * playerSpeed));
     }
 
     private void Fire(InputAction.CallbackContext context)

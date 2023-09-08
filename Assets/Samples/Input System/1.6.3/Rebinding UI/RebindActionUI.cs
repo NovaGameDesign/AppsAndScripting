@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-////TODO: localization support
-
-////TODO: deal with composites that have parts bound in different control schemes
-
 namespace UnityEngine.InputSystem.Samples.RebindUI
 {
-    /// <summary>
-    /// A reusable component with a self-contained UI for rebinding a single action.
-    /// </summary>
+
     public class RebindActionUI : MonoBehaviour
     {
         /// <summary>
@@ -52,18 +46,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             }
         }
 
-        /// <summary>
-        /// Text component that receives the name of the action. Optional.
-        /// </summary>
-        public Text actionLabel
-        {
-            get => m_ActionLabel;
-            set
-            {
-                m_ActionLabel = value;
-                UpdateActionLabel();
-            }
-        }
 
         /// <summary>
         /// Text component that receives the display string of the binding. Can be <c>null</c> in which
@@ -236,7 +218,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         /// </summary>
         public void StartInteractiveRebind()
         {
-            if (!ResolveActionAndBinding(out var action, out var bindingIndex))
+            if (!ResolveActionAndBinding(out InputAction action, out int bindingIndex))
                 return;
 
             // If the binding is a composite, we need to rebind each part in turn.

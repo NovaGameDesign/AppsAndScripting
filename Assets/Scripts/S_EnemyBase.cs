@@ -21,11 +21,11 @@ public class S_EnemyBase : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject == gameObject.Player)
-        //{
-            
-       // }
-        Debug.Log("Entered the enemy's collider");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("The Player entered the enemy's collider");
+        }
+        else Debug.Log("Something other than the player entered the Enemy's Collider.");
 
     }
    

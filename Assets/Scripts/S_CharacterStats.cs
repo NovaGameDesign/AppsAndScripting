@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Timers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class S_CharacterStats : MonoBehaviour
@@ -17,13 +14,9 @@ public class S_CharacterStats : MonoBehaviour
     protected int ammo;
     protected int maxAmmo;
 
-    private void Start()
+    private void Awake()
     {
-        maxHealth = health;
-        System.Timers.Timer regenTimer = new System.Timers.Timer();
-        regenTimer.Elapsed += new ElapsedEventHandler(regenerateHealth);
-        regenTimer.Interval = 1000;
-        regenTimer.Enabled = true;
+        maxHealth = health;       
     }
 
     private void reduceHealth(float incomingDamage)
