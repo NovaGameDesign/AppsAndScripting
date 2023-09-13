@@ -6,4 +6,11 @@ Furthermore, while in the menu players can also change their own bindings by cli
 
 Inputs can only be rebinded with their respective input types, ie. mouse can only be rebound with mouse, and so on. 
 
-There are two bullets types present which can be fired with LMB or R2, the Rainbow and Cloudly bullets. Each has a custom shader & material which alters the visuals of the bullet during gameplay, and each has their own damage values & speed. 
+The rebinding of an input can also be canceled with TAB or Select (gamepad) while rebinding. 
+
+There are two bullets types present which can be fired with LMB or R2, the Rainbow and Cloudly bullets. Each has a custom shader & material which alters the visuals of the bullet during gameplay, 
+and each has their own damage values & speed. 
+
+Running into the enemy will cause the player to take damage, which will then be regenerated moments later.
+
+Similarly hitting an enemy with a bullet will cause it to take damage, and if the enemy's health is less than 0, it will get destroyed. 

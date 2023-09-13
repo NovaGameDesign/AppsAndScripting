@@ -3,13 +3,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class InputRebinding : MonoBehaviour
 {
     private InputAction inputAction;
-    public InputActionReference actionReference;
-    public int actionValueReference;
+    [SerializeField] private InputActionReference actionReference;
+    [SerializeField] private int actionValueReference;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private bool isControllerLayout = false;
 
@@ -31,13 +33,19 @@ public class InputRebinding : MonoBehaviour
     private InputActionRebindingExtensions.RebindingOperation rebindOperation;
 
     private void Start()
-    {      
-       
-        Debug.Log(inputAction);
+    {   
+        RefreshBindings();
+        UpdateUi();
+        if(inputAction != null)
+        {
+            Debug.Log(inputAction);
+        }
+        
     }
 
     private void OnValidate()
     {
+        
         RefreshBindings();
         UpdateUi();
     }
@@ -47,7 +55,8 @@ public class InputRebinding : MonoBehaviour
     /// </summary>
     private void RefreshBindings()
     {        
-        inputAction = actionReference.action;        var bindingCount = actionReference.action.bindings.Count;
+        inputAction = actionReference.action;        
+        var bindingCount = actionReference.action.bindings.Count;
         if (actionValueReference > bindingCount)
         {
             actionValueReference = 1; //If for some reason our value is HIGHER than the amount of bindings, we just rest it to 1 (the first input). 
@@ -86,6 +95,7 @@ public class InputRebinding : MonoBehaviour
        
     }
 
+
     public void StartInteractiveReibnd()
     {        
         if (inputAction.bindings[actionValueReference].isComposite)
@@ -115,10 +125,10 @@ public class InputRebinding : MonoBehaviour
         {
             Debug.Log("Controller layout was enabled");
             
-            rebindOperation = action.PerformInteractiveRebinding(bindingIndex)           
-               .WithControlsExcluding("<keyboard>/anyKey")                                           
+            rebindOperation = action.PerformInteractiveRebinding(bindingIndex) 
                .OnMatchWaitForAnother(.3f)
-               //.WithCancelingThrough("<Keyboard>/tab")                
+               .WithCancelingThrough("<Gamepad>/select")
+               .WithControlsHavingToMatchPath("<Gamepad>")
                .OnCancel(
                operation =>
                {
@@ -147,15 +157,17 @@ public class InputRebinding : MonoBehaviour
                            PerformInteractiveRebind(action, nextBindingIndex, true);
                    }
                })
-               .Start();
-            return;
+               .Start();            
         }
         else if(!isControllerLayout)
          {
              Debug.Log("Controller layout was not enabled");
              rebindOperation = action.PerformInteractiveRebinding(bindingIndex)               
                 .OnMatchWaitForAnother(.3f)
-                //.WithCancelingThrough("<Keyboard>/tab")                
+                .WithControlsHavingToMatchPath("<Keyboard>")
+                .WithCancelingThrough("<Keyboard>/tab")
+               // .WithControlsExcluding("<Keyboard>/anyKey")
+                //.WithExpectedControlType<Keyboard>()
                 .OnCancel(
                 operation =>
                 {
