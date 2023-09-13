@@ -21,14 +21,16 @@ public class S_Player : MonoBehaviour
 
     private Camera mainCamera;
 
+    //Bullets
+    public GameObject [] bullets;
+
     //Input System 
     private PlayerInput playerInput;
     public PlayerInputs playerControls;
-    public int controlScheme;
-
+    [System.NonSerialized] public int controlScheme;
     [System.NonSerialized] public InputAction move;
     [System.NonSerialized] public InputAction look;
-    private InputAction fire;
+    [System.NonSerialized] public InputAction fire;
    
     // ___________________________________________
     private void Awake()
@@ -80,7 +82,7 @@ public class S_Player : MonoBehaviour
         playerRotation.x += lookDirection.x * mouseSensitivity * Time.deltaTime;
         playerRotation.y -= lookDirection.y * mouseSensitivity * Time.deltaTime;
         playerRotation.x = Mathf.Repeat(playerRotation.x, 360);
-        playerRotation.y = Mathf.Clamp(playerRotation.y, -75, 75);
+        playerRotation.y = Mathf.Clamp(playerRotation.y, -90, 90);
         rb.rotation = Quaternion.Euler(0f, playerRotation.x, 0f);
         mainCamera.transform.rotation = Quaternion.Euler(playerRotation.y, playerRotation.x, 0f);
        
@@ -105,6 +107,15 @@ public class S_Player : MonoBehaviour
 
     private void Fire(InputAction.CallbackContext context)
     {
-        Debug.Log("We Fired!");
+        int i = UnityEngine.Random.Range(0, 2);
+        if(i == 0) 
+        {
+           GameObject bullet = Instantiate(bullets[0], transform.forward + transform.position, transform.rotation);          
+        }
+        else
+        {
+            GameObject bullet = Instantiate(bullets[1], transform.forward + transform.position, transform.rotation);
+        }
+        
     }
 }

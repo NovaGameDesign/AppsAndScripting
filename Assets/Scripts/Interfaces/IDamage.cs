@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDamage 
 {
-    void DealDamage(float incomingDamage, string damageType);
+    void DealDamage(float incomingDamage);
  
 }

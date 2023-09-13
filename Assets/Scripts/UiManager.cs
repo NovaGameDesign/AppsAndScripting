@@ -33,7 +33,8 @@ public class UiManager : MonoBehaviour
         if (menu.activeSelf)
         {
             menu.SetActive(false);
-            playerInput.SwitchCurrentActionMap("Player");            
+            playerInput.SwitchCurrentActionMap("Player");
+           
         }
         else
         {            

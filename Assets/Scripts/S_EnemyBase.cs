@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class S_EnemyBase : MonoBehaviour
 {
-    
+    //[SerializeField] private string damageType = "Default";
+    public bool damageable = true;
+
     void Start()
     {
         
@@ -14,16 +16,11 @@ public class S_EnemyBase : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Entered Collider");
-    }
-    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("The Player entered the enemy's collider");
+            collision.gameObject.SendMessage("DealDamage", 5);
         }
         else Debug.Log("Something other than the player entered the Enemy's Collider.");
 
