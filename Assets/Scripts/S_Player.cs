@@ -48,29 +48,6 @@ public class S_Player : MonoBehaviour
 
         // Need to disable only the TFGH/WASD/Controller inputs of move rather than the entire thing. 
     }
-    /*
-     Old code from when I was using generate C# class rather than the input component itself. 
-    private void OnEnable()
-    {   
-        move = playerControls.Player.Move;
-        move.Enable();
-
-        look = playerControls.Player.Look;
-        look.Enable();
-
-        fire = playerControls.Player.Fire;
-        fire.Enable();
-        fire.performed += Fire;
-    }
-    private void OnDisable()
-    {
-        playerControls.Disable();
-        move.Disable();
-        look.Disable();
-        fire.Disable();
-    }*/
-
-    // ___________________________________________
 
     
 

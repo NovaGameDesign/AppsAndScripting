@@ -67,7 +67,7 @@ public class InputRebinding : MonoBehaviour
             //var bindingToChang213123e = binding[actionValueReference].comp;
         }
         var bindingToChange = binding[actionValueReference];
-        Debug.Log("The binding we want to change is: " + inputAction.GetBindingDisplayString(actionValueReference));
+       // Debug.Log("The binding we want to change is: " + inputAction.GetBindingDisplayString(actionValueReference));
 
         if (showBindings)
         {

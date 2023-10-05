@@ -11,10 +11,14 @@ public class UiManager : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction openMenu;
     private InputAction closeMenu;
+    private InputAction scroll;
 
     [SerializeField] private TextMeshProUGUI controlSchemeText;
     [SerializeField] private GameObject menu;
 
+    [SerializeField] private playerInventory inventoryReference;
+
+    int scrollLevel;
 
     void Awake()
     {
@@ -25,19 +29,39 @@ public class UiManager : MonoBehaviour
         openMenu = playerInput.actions["Open Menu"];
         openMenu.performed += openGameMenu;
         closeMenu = playerInput.actions["Close Menu"];
-        closeMenu.performed += openGameMenu;       
+        closeMenu.performed += openGameMenu;
+
+        scroll = playerInput.actions["Scroll Wheel"];
+        scroll.started += ScrollMenu;   
+
     }
 
+    void ScrollMenu(InputAction.CallbackContext context)
+    {
+        var temp = scroll.ReadValue<Vector2>().y;
+       
+        if (temp > 0)
+        {
+            scrollLevel++;
+        }
+        else if(temp < 0) { scrollLevel--; }
+
+        if (scrollLevel < 0) scrollLevel = 0;
+        Debug.Log(scrollLevel);
+        inventoryReference.RefreshDisplayedItems(scrollLevel);
+    }
     void openGameMenu(InputAction.CallbackContext context)
     {
         if (menu.activeSelf)
         {
+            Time.timeScale = 1;
             menu.SetActive(false);
             playerInput.SwitchCurrentActionMap("Player");
            
         }
         else
-        {            
+        {
+            Time.timeScale = 0;
             menu.SetActive(true);         
             playerInput.SwitchCurrentActionMap("UI");            
         }

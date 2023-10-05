@@ -76,6 +76,60 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Use Item",
+                    "type": "Button",
+                    "id": "70013e34-82a9-430e-bd62-686eb0be3dfb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swap Quick Item",
+                    "type": "Button",
+                    "id": "f23ca446-175e-4afe-b0ef-783b23cf0712",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Item 1",
+                    "type": "Button",
+                    "id": "f828554e-20b0-41e8-886d-34c39b63518b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Item 2",
+                    "type": "Button",
+                    "id": "ed6b6542-7add-49dd-993e-a2f0d9507bc9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Item 3",
+                    "type": "Button",
+                    "id": "0e95e52d-fbc6-468a-8774-32607f9bfd59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Item 4",
+                    "type": "Button",
+                    "id": "ab859c90-a84e-4449-8f59-28287b7cef89",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -204,6 +258,17 @@
                     "name": "",
                     "id": "9457512d-5305-4310-aae8-85b405284283",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b34308c0-6fe6-4832-b3fb-f95184047c66",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -419,6 +484,72 @@
                     "action": "Look Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09f9ff05-ede0-41f8-9621-fcd5fa6a16e8",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0452e1cb-8a2b-4936-9dc2-51f35caac80e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Item 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6eda0cf-54e0-4db6-a532-e8e91fd9bbf9",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Item 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43dd0542-96f0-4f31-ba1d-7c188934d958",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Item 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76bb7ac1-5e3e-49c0-8ae3-a40949c8de46",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Item 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e64785b6-15ec-4b43-ae03-76a2ae691bbf",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap Quick Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -481,7 +612,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ScrollWheel",
+                    "name": "Scroll Wheel",
                     "type": "PassThrough",
                     "id": "35f37a80-cfa2-4f9f-af47-e92bac59a75a",
                     "expectedControlType": "Vector2",
@@ -897,7 +1028,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ScrollWheel",
+                    "action": "Scroll Wheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
