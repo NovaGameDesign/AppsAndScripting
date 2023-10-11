@@ -15,6 +15,7 @@ public class ItemSlotInfo : MonoBehaviour
     public TextMeshProUGUI itemLoreDescriptionInfo;
     public GameObject itemLore;
     [System.NonSerialized] public int itemIndex;
+    public GameObject lorePage;
 
  
 }

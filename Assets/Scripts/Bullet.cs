@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     private Rigidbody rb;
     public int damage;
     public int speed = 5;
+    public bool hitsPlayer;
+    public bool hitsAllies;
+    public bool hitsEnemies;
 
     private void Start()
     {
@@ -22,25 +25,42 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerStats>(out var player))
+        if (hitsPlayer)
         {
-            if(player.damageable) 
+            if (collision.gameObject.TryGetComponent<PlayerStats>(out var player))
             {
-                player.SendMessage("DealDamage", damage);
+                if (player.damageable)
+                {
+                    player.DealDamage(damage);
+                }
+                Destroy(this.gameObject);
+
             }
-            Destroy(this.gameObject);
-            
         }
-        else if (collision.gameObject.TryGetComponent<EnemyStats>(out var enemy))
+        if (hitsAllies)
         {
-            if (enemy.damageable)
+            if (collision.gameObject.TryGetComponent<AllyStats>(out var enemy))
             {
-                enemy.SendMessage("DealDamage", damage);
+                if (enemy.damageable)
+                {
+                    enemy.DealDamage(damage);
+                }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
         }
-        else
-            Debug.Log("Something other than the player or enemy was hit.");
+       if (hitsEnemies)
+        {
+            if (collision.gameObject.TryGetComponent<EnemyStats>(out var enemy))
+            {
+                if (enemy.damageable)
+                {
+                    enemy.DealDamage(damage);
+                }
+                Destroy(this.gameObject);
+            }
+        }
+
+        StartCoroutine(DestroyBullet());
     }
 
     IEnumerator DestroyBullet()

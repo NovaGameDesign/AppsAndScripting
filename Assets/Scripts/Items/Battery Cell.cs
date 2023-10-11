@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BatteryCell : ItemParent
 {
-
-    public override void UseItem()
+    public PlayerStats stats;
+    public override void UseItem(Transform transform)
     {
-        Debug.Log("Attempted to use the battery cell");
+        stats.increaseHealth(10);
     }
 
 }

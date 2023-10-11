@@ -1,16 +1,18 @@
 This game, developed by Cole Andrews, can be played with the WASD, TFGH, or Controller keybinds. 
 
-Players can open the game menu with Escape (Keyboard) or Pause (Controller). Players can swap between primary, secondary and controller settings -- which correlate to WASD, TFGH, and controller respectively. 
+Players can move around with the default keybinds of WASD, rotate with mouse, and shoot with LMB. The game menu can be opened with ESCAPE. Other keybinds are avaiable and can be viewed in the menu.
 
-Furthermore, while in the menu players can also change their own bindings by clicking on an option an following that with an input of their choice. 
+While in the menu the player can swap pages with the header navigation located at the top. 
+	1. Inventory Page: players can select from the Quick Items to choose a new quick item. Only the four panes on the right currently work, in the future I'll add weapon and armor specific tabs. 
+	2. Items page: players can look at their current items -- while in this page using the scroll wheel will cycle through the displayed items. 
+	3. Stats Page: coming soon! 
+	4. Settings Page: This page allows users to rebind keys, or change their current keybind layout which allows players to swap from keyboard to controller. 
 
-Inputs can only be rebinded with their respective input types, ie. mouse can only be rebound with mouse, and so on. 
+Across the game there are a few key items the player can obtain, three guns and three heals. The three guns are the pistol, machinegune, and shotgun. Each has their own unique bullet firing pattern. 
+The weapons can be equipped via the quick items panels in the inventory. Players can cycle through their currently selected quick item with the 1,2,3,4 key. 
+Weapons can be fired with LMB (or the relative keybind) and consumables can be used with "E"
 
-The rebinding of an input can also be canceled with TAB or Select (gamepad) while rebinding. 
+In the case of consumable items, such as the Battery Cell (a heal) using them will reduce their quantity by 1. Once the quantity reaches 0 it will be removed from the quick items and inventory. 
 
-There are two bullets types present which can be fired with LMB or R2, the Rainbow and Cloudly bullets. Each has a custom shader & material which alters the visuals of the bullet during gameplay, 
-and each has their own damage values & speed. 
+There are two enemies in the game (write) 
 
-Running into the enemy will cause the player to take damage, which will then be regenerated moments later.
-
-Similarly hitting an enemy with a bullet will cause it to take damage, and if the enemy's health is less than 0, it will get destroyed. 

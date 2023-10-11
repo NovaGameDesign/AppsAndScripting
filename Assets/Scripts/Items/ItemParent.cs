@@ -27,8 +27,6 @@ public class ItemParent : MonoBehaviour
     public string itemDescription = null;
     public string itemLore = null;
 
-
-
     public ItemType type = ItemType.weapon;
     public GameObject itemReference;
     [System.NonSerialized] public bool isActive = false;
@@ -37,7 +35,7 @@ public class ItemParent : MonoBehaviour
     public Sprite icon = null;
 
 
-    public virtual void UseItem() { }
+    public virtual void UseItem(Transform transform = null) { }
     
     
 }

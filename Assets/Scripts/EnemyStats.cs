@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 public class EnemyStats : S_CharacterStats, IDamage
 {
 
-    private GameObject []player; 
+    private GameObject []player;
+    
     private void Start()
     {
        

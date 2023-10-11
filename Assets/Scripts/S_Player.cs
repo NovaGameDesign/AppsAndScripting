@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -31,6 +32,8 @@ public class S_Player : MonoBehaviour
     [System.NonSerialized] public InputAction move;
     [System.NonSerialized] public InputAction look;
     [System.NonSerialized] public InputAction fire;
+
+    public playerInventory inventory;
    
     // ___________________________________________
     private void Awake()
@@ -39,6 +42,7 @@ public class S_Player : MonoBehaviour
         mainCamera = Camera.main;
         playerInput = GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody>();
+        inventory = gameObject.GetComponent<playerInventory>();
 
      
         move = playerInput.actions["Keyboard Movement Primary"];    
@@ -84,7 +88,28 @@ public class S_Player : MonoBehaviour
 
     private void Fire(InputAction.CallbackContext context)
     {
-        int i = UnityEngine.Random.Range(0, 2);
+        if (inventory.quickItems.ElementAt(0).isActive == true & inventory.quickItems.ElementAt(0).itemId != null & inventory.quickItems.ElementAt(0).type == ItemType.weapon)
+        {
+            inventory.quickItems.ElementAt(0).UseItem(transform);
+        }
+        else if (inventory.quickItems.ElementAt(1).isActive == true & inventory.quickItems.ElementAt(1).itemId != null & inventory.quickItems.ElementAt(1).type == ItemType.weapon)
+        {
+            inventory.quickItems.ElementAt(1).UseItem(transform);
+      
+        }
+        else if (inventory.quickItems.ElementAt(2).isActive == true & inventory.quickItems.ElementAt(2).itemId != null & inventory.quickItems.ElementAt(2).type == ItemType.weapon)
+        {
+            inventory.quickItems.ElementAt(2).UseItem(transform);
+       
+        }
+        else if (inventory.quickItems.ElementAt(3).isActive == true & inventory.quickItems.ElementAt(3).itemId != null & inventory.quickItems.ElementAt(3).type == ItemType.weapon)
+        {
+            inventory.quickItems.ElementAt(3).UseItem(transform);
+        }
+        else Debug.Log("No Item Selected");
+
+
+        /*int i = UnityEngine.Random.Range(0, 2);
         if(i == 0) 
         {
            GameObject bullet = Instantiate(bullets[0], transform.forward + transform.position, transform.rotation);          
@@ -93,6 +118,6 @@ public class S_Player : MonoBehaviour
         {
             GameObject bullet = Instantiate(bullets[1], transform.forward + transform.position, transform.rotation);
         }
-        
+        */
     }
 }

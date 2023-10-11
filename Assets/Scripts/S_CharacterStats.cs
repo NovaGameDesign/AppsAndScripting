@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Timers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,19 +25,11 @@ public class S_CharacterStats : MonoBehaviour
     
     public bool damageable = true;
 
-    private void reduceHealth(float incomingDamage) // we didn't end up using this at all, lol 
+    public void increaseHealth(float healAmount)
     {
-        incomingDamage = incomingDamage * defense;
-        health -= (int)incomingDamage;
-    }
-
-    private static void regenerateHealth(object source, ElapsedEventArgs e)
-    {
-       /* if(source == S_CharacterStats)
-        {
-            
-        }
-        Debug.Log("Health increased!");*/
+        health += healAmount;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        healthbar.value = health / maxHealth;
     }
 
     public IEnumerator RegnerateHealth()

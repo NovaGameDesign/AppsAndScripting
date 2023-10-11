@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
+    /// <summary>
+    /// Sequences continue execution even after a node succeeds in its execution. This means that if a node has three childern and child 1 succeed child 2 will execute. However, if child 2 fails then the execution is canceled. 
+    /// </summary>
     public class Sequence : Node
     {
         public Sequence() : base() { }

@@ -130,4 +130,4 @@ MonoBehaviour:
     possess immense healing capabilities.
   type: 2
   itemReference: {fileID: 3355759139637172029}
-  icon: {fileID: 21300000, guid: 7ad164f432589d941b296c0111b3348a, type: 3}
+  icon: {fileID: 21300000, guid: 7b4bb27e239d2f9438d2b86aad05c2b0, type: 3}

@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
+    /// <summary>
+    /// Selectors cancel execution after a a node succeeds in its execution. If they fail, they continue down the list of nodes. 
+    /// </summary>
     public class Selector : Node
     {
         public Selector() : base() { }

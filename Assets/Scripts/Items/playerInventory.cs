@@ -6,14 +6,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
-using System.Reflection;
+using UnityEngine.EventSystems;
 
 
 public class playerInventory : MonoBehaviour
 {  
     public int numOfHoldableItems = 12;
     private LinkedList<ItemParent> items = new LinkedList<ItemParent>();
-    private LinkedList<ItemParent> quickItems = new LinkedList<ItemParent>();
+    public LinkedList<ItemParent> quickItems = new LinkedList<ItemParent>();
     [SerializeField] private ItemParent emptyItem;
 
     //The Ui Part 
@@ -30,6 +30,8 @@ public class playerInventory : MonoBehaviour
     /// The border that appears around the currently selected item.
     /// </summary>
     protected List<GameObject> QuickItemBorder = new List<GameObject>();
+    protected GameObject itemOut;
+    public Transform itemSpawnPoint;
 
     public ItemSlotInfo[] itemSlotsUI;
     private int slotId = -1;
@@ -51,7 +53,7 @@ public class playerInventory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI controlSchemeText;
     [SerializeField] private GameObject menu;
 
-  
+    int UILayer;
 
     private void Awake()
     {
@@ -72,7 +74,8 @@ public class playerInventory : MonoBehaviour
         item1.performed += SwapActiveQuickItem; item2.performed += SwapActiveQuickItem; item3.performed += SwapActiveQuickItem; item4.performed += SwapActiveQuickItem;
     }
     private void Start()
-    {      
+    {
+        UILayer = LayerMask.NameToLayer("UI");
         errorMessage = GameObject.Find("Error Message");
         errorMessage.SetActive(false);
 
@@ -92,7 +95,85 @@ public class playerInventory : MonoBehaviour
 
     }
 
-    public void SetSlotId(int SlotId)
+    private void Update()
+    {
+        Debug.Log(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
+    }
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    public bool IsPointerOverUIElement()
+    {
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            if (curRaysastResult.gameObject.layer == UILayer)
+            {
+                switch (curRaysastResult.gameObject.name)
+                {
+                    case "Item 1":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(true); itemSlotsUI[1].lorePage.SetActive(false); itemSlotsUI[2].lorePage.SetActive(false); itemSlotsUI[3].lorePage.SetActive(false); itemSlotsUI[4].lorePage.SetActive(false); itemSlotsUI[5].lorePage.SetActive(false);
+                            break;
+                        }
+                    case "Item 2":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(false); itemSlotsUI[1].lorePage.SetActive(true); itemSlotsUI[2].lorePage.SetActive(false); itemSlotsUI[3].lorePage.SetActive(false); itemSlotsUI[4].lorePage.SetActive(false); itemSlotsUI[5].lorePage.SetActive(false);
+                            break;
+                        }
+                    case "Item 3":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(false); itemSlotsUI[1].lorePage.SetActive(false); itemSlotsUI[2].lorePage.SetActive(true); itemSlotsUI[3].lorePage.SetActive(false); itemSlotsUI[4].lorePage.SetActive(false); itemSlotsUI[5].lorePage.SetActive(false);
+                            break;
+                        }
+                    case "Item 4":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(false); itemSlotsUI[1].lorePage.SetActive(false); itemSlotsUI[2].lorePage.SetActive(false); itemSlotsUI[3].lorePage.SetActive(true); itemSlotsUI[4].lorePage.SetActive(false); itemSlotsUI[5].lorePage.SetActive(false);
+                            break;
+                        }
+                    case "Item 5":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(false); itemSlotsUI[1].lorePage.SetActive(false); itemSlotsUI[2].lorePage.SetActive(false); itemSlotsUI[3].lorePage.SetActive(false); itemSlotsUI[4].lorePage.SetActive(true); itemSlotsUI[5].lorePage.SetActive(false);
+                            break;
+                        }
+                    case "Item 6":
+                        {
+                            itemSlotsUI[0].lorePage.SetActive(false); itemSlotsUI[1].lorePage.SetActive(false); itemSlotsUI[2].lorePage.SetActive(false); itemSlotsUI[3].lorePage.SetActive(false); itemSlotsUI[4].lorePage.SetActive(false); itemSlotsUI[5].lorePage.SetActive(true);
+                            break;
+                        }
+                    default:
+                        {
+                            // Debug.Log("there was no valid UI element to display a lore page for. The UI element's name was: " + curRaysastResult.gameObject.name);
+                            break;
+                        }
+                }
+               
+                return true;
+            }
+                
+        }
+        return false;
+    }
+
+
+    //Gets all event system raycast results of current mouse or touch position.
+    static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+        return raysastResults;
+    }
+
+
+public void SetSlotId(int SlotId)
     {
         
         slotId = itemSlotsUI[SlotId].itemIndex;
@@ -139,7 +220,7 @@ public class playerInventory : MonoBehaviour
         {          
             if(index >= items.Count)
             {
-                Debug.Log("We have less items than we can display. Canceling the For loop");
+                //Debug.Log("We have less items than we can display. Canceling the For loop");
                 break;
             }
             //Update Icons
@@ -188,12 +269,14 @@ public class playerInventory : MonoBehaviour
             scrollLevel = items.Count;
         }
 
-        Debug.Log(scrollLevel);
+        //Debug.Log(scrollLevel);
         RefreshDisplayedItems(scrollLevel);
     }
+
+    
     private void UseItem(InputAction.CallbackContext context)
     {
-        if (quickItems.ElementAt(0).isActive == true & quickItems.ElementAt(0).itemId != null) 
+        if (quickItems.ElementAt(0).isActive == true & quickItems.ElementAt(0).itemId != null & quickItems.ElementAt(0).type == ItemType.consumable) 
         { 
             quickItems.ElementAt(0).UseItem();
             quickItems.ElementAt(0).numOfItems--;
@@ -207,7 +290,7 @@ public class playerInventory : MonoBehaviour
             }
             UpdateItemDisplay(0);
         }
-        else if (quickItems.ElementAt(1).isActive == true & quickItems.ElementAt(1).itemId != null)
+        else if (quickItems.ElementAt(1).isActive == true & quickItems.ElementAt(1).itemId != null & quickItems.ElementAt(1).type == ItemType.consumable)
         {
             quickItems.ElementAt(1).UseItem();
             quickItems.ElementAt(1).numOfItems--;
@@ -222,7 +305,7 @@ public class playerInventory : MonoBehaviour
             }
             UpdateItemDisplay(1);
         }           
-        else if (quickItems.ElementAt(2).isActive == true & quickItems.ElementAt(2).itemId != null)
+        else if (quickItems.ElementAt(2).isActive == true & quickItems.ElementAt(2).itemId != null & quickItems.ElementAt(2).type == ItemType.consumable)
         {
             quickItems.ElementAt(2).UseItem();
             quickItems.ElementAt(2).numOfItems--;
@@ -238,7 +321,7 @@ public class playerInventory : MonoBehaviour
             }
             UpdateItemDisplay(2);
         }
-        else if (quickItems.ElementAt(3).isActive == true & quickItems.ElementAt(3).itemId != null)
+        else if (quickItems.ElementAt(3).isActive == true & quickItems.ElementAt(3).itemId != null & quickItems.ElementAt(3).type == ItemType.consumable)
         {
             quickItems.ElementAt(3).UseItem();
             quickItems.ElementAt(3).numOfItems--;
@@ -260,10 +343,12 @@ public class playerInventory : MonoBehaviour
 
     private void SwapActiveQuickItem(InputAction.CallbackContext context)
     {
+        //Destroy(itemOut?.gameObject);
         if (context.action == item1)
         {
             quickItems.ElementAt(0).isActive = true; quickItems.ElementAt(1).isActive = false; quickItems.ElementAt(2).isActive = false; quickItems.ElementAt(3).isActive = false;
-            QuickItemBorder[0].SetActive(true); QuickItemBorder[1].SetActive(false); QuickItemBorder[2].SetActive(false);QuickItemBorder[3].SetActive(false);
+            QuickItemBorder[0].SetActive(true); QuickItemBorder[1].SetActive(false); QuickItemBorder[2].SetActive(false);QuickItemBorder[3].SetActive(false);            
+            //itemOut = Instantiate(quickItems.ElementAt(0).itemReference, itemSpawnPoint.position, itemSpawnPoint.rotation);
         }
         else if (context.action == item2)
         {
@@ -346,7 +431,7 @@ public class playerInventory : MonoBehaviour
             if(items.Count <= 0)
             {               
                 items.AddFirst(itemScript);
-                Debug.Log("There was no items in the Linked List, so we added one."+items);
+               // Debug.Log("There was no items in the Linked List, so we added one."+items);
                 Destroy(collision.gameObject);
                 //collision.gameObject.SetActive(false);
             } 
@@ -357,7 +442,7 @@ public class playerInventory : MonoBehaviour
                     if (items.ElementAt(i).itemId == itemScript.itemId)
                     {
                         items.ElementAt(i).numOfItems += itemScript.numOfItems;
-                        Debug.Log("The item already existed! There is now: " + items.ElementAt(i).numOfItems);
+                       // Debug.Log("The item already existed! There is now: " + items.ElementAt(i).numOfItems);
                         Destroy(collision.gameObject);
 
                         break;
@@ -366,7 +451,7 @@ public class playerInventory : MonoBehaviour
                     if (items.Count == i+1) // the final iteration
                     {
                         items.AddLast(itemScript);
-                        Debug.Log("The item didn't exist at all! We added it and there is now: " + items.Find(itemScript).Value.numOfItems);
+                     //   Debug.Log("The item didn't exist at all! We added it and there is now: " + items.Find(itemScript).Value.numOfItems);
                         Destroy(collision.gameObject);
 
                     }
@@ -376,7 +461,7 @@ public class playerInventory : MonoBehaviour
         }
         else
         {
-            Debug.Log("The item didn't have the Item Tag, or it didn't have the item script/a child of it");
+           // Debug.Log("The item didn't have the Item Tag, or it didn't have the item script/a child of it");
         }    
     }
     void openGameMenu(InputAction.CallbackContext context)

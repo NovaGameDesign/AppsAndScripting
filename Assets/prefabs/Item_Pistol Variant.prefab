@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8087082358402799962
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 839.17017
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 75.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 308.65802
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_Name
+      value: Item_Pistol Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7798876287026012797}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242821324670739714}
+  m_SourcePrefab: {fileID: 100100000, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+--- !u!1 &9005650451649029131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 14323974a6b68b042aa722b18fca9315, type: 3}
+  m_PrefabInstance: {fileID: 8087082358402799962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7798876287026012797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005650451649029131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6921a840ed2905458e57a89e752f96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfItems: 1
+  itemId: Pistol-1
+  itemName: Rusty Pistol
+  itemDescription: Shooting will shoot a single projectile that deals 6 damage.
+  itemLore: 'A rusted Pistol from a bygone era. '
+  type: 0
+  itemReference: {fileID: 0}
+  icon: {fileID: 21300000, guid: e9107b8bb15d6144f85c91e4cd7d4010, type: 3}
+  bullets: {fileID: 7598144716209525813, guid: 8db5d7ee3c3553f4fbbac9485f1cd313, type: 3}
+  fireRate: 1
+--- !u!65 &1242821324670739714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005650451649029131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0793457, y: 1, z: 3.3149414}
+  m_Center: {x: 0.03967285, y: 0, z: -0.12780762}
