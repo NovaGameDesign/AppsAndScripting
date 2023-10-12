@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 6
-  speed: 25
+  speed: 40
+  travelDistance: 20
   hitsPlayer: 0
   hitsAllies: 0
   hitsEnemies: 1

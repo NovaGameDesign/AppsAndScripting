@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 /// <summary>
@@ -12,6 +13,7 @@ public enum ItemType
     armor,
     consumable,
 }
+
 
 public class ItemParent : MonoBehaviour
 {
@@ -36,6 +38,10 @@ public class ItemParent : MonoBehaviour
 
 
     public virtual void UseItem(Transform transform = null) { }
-    
-    
+
+    private void Update()
+    {
+        transform.RotateAround(transform.position, Vector3.up, 100 * Time.deltaTime);
+    }
+
 }

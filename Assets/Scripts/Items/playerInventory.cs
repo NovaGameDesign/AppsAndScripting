@@ -252,11 +252,11 @@ public void SetSlotId(int SlotId)
         //Check if we should increase or decrease the value
         if (temp > 0)
         {
-            scrollLevel++;
+            scrollLevel--;
         }
         else if (temp < 0) 
         { 
-            scrollLevel--;
+            scrollLevel++;
         }
 
         //Check if we are trying to go past 0 or above the amount of items we have. 

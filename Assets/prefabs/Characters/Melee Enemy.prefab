@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageable: 1
   bullets: []
+  _katana: {fileID: 5520205863456909435, guid: a3628025b2f79d248a9d8feec5e49cb3, type: 3}
 --- !u!114 &5759412559356271163
 MonoBehaviour:
   m_ObjectHideFlags: 0

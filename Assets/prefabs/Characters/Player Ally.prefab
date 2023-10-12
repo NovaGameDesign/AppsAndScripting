@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: -8594346129914042554}
   - component: {fileID: 7606106912508924756}
   - component: {fileID: 1587716498831902800}
-  - component: {fileID: 5759412559356271163}
   - component: {fileID: -1247065842958830132}
   - component: {fileID: -7827632976688866798}
   m_Layer: 0
@@ -440,25 +439,7 @@ MonoBehaviour:
   damageable: 1
   bullets:
   - {fileID: 7598144716209525813, guid: 51b926cd143de554daf5cc4dbe69216a, type: 3}
---- !u!114 &5759412559356271163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7281870470705092202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc69fe03cbcdb8247823a3ab6e283fa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  regenAmount: 15
-  regenDelay: 5
-  defense: 0.25
-  healthbar: {fileID: 1178633202329769498}
-  damageable: 1
+  _katana: {fileID: 0}
 --- !u!114 &-1247065842958830132
 MonoBehaviour:
   m_ObjectHideFlags: 0

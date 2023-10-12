@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour
     private Rigidbody rb;
     public int damage;
     public int speed = 5;
+    public int travelDistance = 5;
     public bool hitsPlayer;
     public bool hitsAllies;
     public bool hitsEnemies;
+
 
     private void Start()
     {
@@ -60,12 +62,12 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        StartCoroutine(DestroyBullet());
+        Destroy(this.gameObject);
     }
 
     IEnumerator DestroyBullet()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(travelDistance);
 
         Destroy(this.gameObject);  
     }
