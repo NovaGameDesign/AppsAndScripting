@@ -31,7 +31,7 @@ public class EnemyStats : S_CharacterStats, IDamage
         healthbar.value = health / maxHealth;
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }

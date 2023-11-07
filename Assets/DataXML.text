@@ -1,0 +1,24 @@
+<saved>
+  <PlayerHealth>100</PlayerHealth>
+  <PlayerPositionX>852.4</PlayerPositionX>
+  <PlayerPositionY>76.31</PlayerPositionY>
+  <PlayerPositionZ>300</PlayerPositionZ>
+  <Enemy>
+    <EnemyPositionX>841</EnemyPositionX>
+    <EnemyPositionY>76.33324</EnemyPositionY>
+    <EnemyPositionZ>293.1</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+  </Enemy>
+  <Enemy>
+    <EnemyPositionX>877</EnemyPositionX>
+    <EnemyPositionY>63.89655</EnemyPositionY>
+    <EnemyPositionZ>284.1</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+  </Enemy>
+  <Enemy>
+    <EnemyPositionX>892.6695</EnemyPositionX>
+    <EnemyPositionY>63.83324</EnemyPositionY>
+    <EnemyPositionZ>272.2929</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+  </Enemy>
+</saved>

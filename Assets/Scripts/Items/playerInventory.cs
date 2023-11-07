@@ -11,9 +11,10 @@ using UnityEngine.EventSystems;
 
 public class playerInventory : MonoBehaviour
 {  
+
     public int numOfHoldableItems = 12;
-    private LinkedList<ItemParent> items = new LinkedList<ItemParent>();
-    public LinkedList<ItemParent> quickItems = new LinkedList<ItemParent>();
+    [System.NonSerialized] public LinkedList<ItemParent> items = new LinkedList<ItemParent>();
+    [System.NonSerialized] public LinkedList<ItemParent> quickItems = new LinkedList<ItemParent>();
     [SerializeField] private ItemParent emptyItem;
 
     //The Ui Part 
@@ -107,7 +108,11 @@ public class playerInventory : MonoBehaviour
     }
 
 
-    //Returns 'true' if we touched or hovering on Unity UI element.
+    /// <summary>
+    /// Returns true if we were hovering over a UI element. Additionally, functionality to hide/show different lore pages based on what the user is currently hovering over. 
+    /// </summary>
+    /// <param name="eventSystemRaysastResults"></param>
+    /// <returns></returns>
     private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
     {
         for (int index = 0; index < eventSystemRaysastResults.Count; index++)
@@ -431,8 +436,8 @@ public void SetSlotId(int SlotId)
             if(items.Count <= 0)
             {               
                 items.AddFirst(itemScript);
-               // Debug.Log("There was no items in the Linked List, so we added one."+items);
-                Destroy(collision.gameObject);
+                // Debug.Log("There was no items in the Linked List, so we added one."+items);
+                collision.gameObject.SetActive(false);
                 //collision.gameObject.SetActive(false);
             } 
             else
@@ -442,8 +447,8 @@ public void SetSlotId(int SlotId)
                     if (items.ElementAt(i).itemId == itemScript.itemId)
                     {
                         items.ElementAt(i).numOfItems += itemScript.numOfItems;
-                       // Debug.Log("The item already existed! There is now: " + items.ElementAt(i).numOfItems);
-                        Destroy(collision.gameObject);
+                        // Debug.Log("The item already existed! There is now: " + items.ElementAt(i).numOfItems);
+                        collision.gameObject.SetActive(false);
 
                         break;
                     }
@@ -451,8 +456,8 @@ public void SetSlotId(int SlotId)
                     if (items.Count == i+1) // the final iteration
                     {
                         items.AddLast(itemScript);
-                     //   Debug.Log("The item didn't exist at all! We added it and there is now: " + items.Find(itemScript).Value.numOfItems);
-                        Destroy(collision.gameObject);
+                        //   Debug.Log("The item didn't exist at all! We added it and there is now: " + items.Find(itemScript).Value.numOfItems);
+                        collision.gameObject.SetActive(false);
 
                     }
 

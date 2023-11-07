@@ -29,7 +29,7 @@ public class ItemParent : MonoBehaviour
     public string itemDescription = null;
     public string itemLore = null;
 
-    public ItemType type = ItemType.weapon;
+    public ItemType type = ItemType.consumable;
     public GameObject itemReference;
     [System.NonSerialized] public bool isActive = false;
 

@@ -14,5 +14,5 @@ Weapons can be fired with LMB (or the relative keybind) and consumables can be u
 
 In the case of consumable items, such as the Battery Cell (a heal) using them will reduce their quantity by 1. Once the quantity reaches 0 it will be removed from the quick items and inventory. 
 
-There are two enemies in the game (write) 
-
+There are two enemies in the game. The first enemy will be idle until the player gets within 10 units, it will then begin to chase the player, shooting if it gets within 5 units. 
+The second enemy uses waypoints to traverse the map and will chase the player if they get within 5 units, using a melee attack if they get within 2. 

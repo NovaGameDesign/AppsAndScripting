@@ -53,22 +53,22 @@ public class S_Player : MonoBehaviour
         // Need to disable only the TFGH/WASD/Controller inputs of move rather than the entire thing. 
     }
 
-    
 
-    void FixedUpdate()
+    private void Update()
     {
-     
+
         //Camera Control
         lookDirection = look.ReadValue<Vector2>();
         playerRotation.x += lookDirection.x * mouseSensitivity * Time.deltaTime;
         playerRotation.y -= lookDirection.y * mouseSensitivity * Time.deltaTime;
-        playerRotation.x = Mathf.Repeat(playerRotation.x, 360);
-        playerRotation.y = Mathf.Clamp(playerRotation.y, -90, 90);
+        playerRotation.x = Mathf.Repeat(playerRotation.x, 360f);
+        playerRotation.y = Mathf.Clamp(playerRotation.y, -90f, 90f);
         rb.rotation = Quaternion.Euler(0f, playerRotation.x, 0f);
         mainCamera.transform.rotation = Quaternion.Euler(playerRotation.y, playerRotation.x, 0f);
-       
+    }
 
-        
+    void FixedUpdate()
+    {        
         //Movement
         playerVelocity = GetMovementInput();
         PlayerMove();

@@ -7,9 +7,8 @@ public class S_EnemyBase : MonoBehaviour
 {
     
     public bool damageable = true;
-    public GameObject [] bullets;
+    public GameObject bullets;
     public GameObject _katana;
-
 
     /*private void OnCollisionEnter(Collision collision)
     {
@@ -23,7 +22,7 @@ public class S_EnemyBase : MonoBehaviour
 
     public void RangedAttack()
     {
-        GameObject bullet = Instantiate(bullets[0].gameObject, (1.2f * transform.forward) + transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bullets.gameObject, (1.2f * transform.forward) + transform.position, transform.rotation);
     }
 
     public void MeleeAttack()
