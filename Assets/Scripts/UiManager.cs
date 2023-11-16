@@ -36,6 +36,20 @@ public class UiManager : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        openMenu.Enable();
+        closeMenu.Enable();
+        scroll.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openMenu.Disable();
+        closeMenu.Disable();
+        scroll.Disable();
+    }
+
     void ScrollMenu(InputAction.CallbackContext context)
     {
         var temp = scroll.ReadValue<Vector2>().y;

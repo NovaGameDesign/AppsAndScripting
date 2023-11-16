@@ -1,24 +1,28 @@
 <saved>
   <PlayerHealth>100</PlayerHealth>
-  <PlayerPositionX>852.4</PlayerPositionX>
+  <PlayerPositionX>841.685</PlayerPositionX>
   <PlayerPositionY>76.31</PlayerPositionY>
-  <PlayerPositionZ>300</PlayerPositionZ>
+  <PlayerPositionZ>307.0301</PlayerPositionZ>
+  <Item>Battery Cell</Item>
+  <Item>Nuclear Cell</Item>
+  <Item>Item_Pistol</Item>
+  <Item>Item_Shotgun</Item>
+  <QuickItem>Item_Pistol</QuickItem>
+  <QuickItem>Null</QuickItem>
+  <QuickItem>Null</QuickItem>
+  <QuickItem>Null</QuickItem>
   <Enemy>
     <EnemyPositionX>841</EnemyPositionX>
-    <EnemyPositionY>76.33324</EnemyPositionY>
-    <EnemyPositionZ>293.1</EnemyPositionZ>
+    <EnemyPositionY>75.91657</EnemyPositionY>
+    <EnemyPositionZ>289.1936</EnemyPositionZ>
     <EnemyIsAlive>True</EnemyIsAlive>
+    <EnemyID>1111111112</EnemyID>
   </Enemy>
   <Enemy>
-    <EnemyPositionX>877</EnemyPositionX>
-    <EnemyPositionY>63.89655</EnemyPositionY>
-    <EnemyPositionZ>284.1</EnemyPositionZ>
-    <EnemyIsAlive>True</EnemyIsAlive>
-  </Enemy>
-  <Enemy>
-    <EnemyPositionX>892.6695</EnemyPositionX>
+    <EnemyPositionX>893.2</EnemyPositionX>
     <EnemyPositionY>63.83324</EnemyPositionY>
-    <EnemyPositionZ>272.2929</EnemyPositionZ>
+    <EnemyPositionZ>262</EnemyPositionZ>
     <EnemyIsAlive>True</EnemyIsAlive>
+    <EnemyID>1111111113</EnemyID>
   </Enemy>
 </saved>

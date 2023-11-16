@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class S_EnemyBase : MonoBehaviour
 {
-    
+    public int ReferenceId = 0;
     public bool damageable = true;
     public GameObject bullets;
     public GameObject _katana;

@@ -38,10 +38,17 @@ public class ItemParent : MonoBehaviour
 
 
     public virtual void UseItem(Transform transform = null) { }
-
+   
+    private void Awake()
+    {
+        /*if(icon == null)
+        {
+            Debug.Log("Icon was null, loading the null PNG from assets");
+            icon = Resources.Load<Sprite>(Application.dataPath + "Assets/materials/null.png");
+        }*/
+    }
     private void Update()
     {
         transform.RotateAround(transform.position, Vector3.up, 100 * Time.deltaTime);
     }
-
 }

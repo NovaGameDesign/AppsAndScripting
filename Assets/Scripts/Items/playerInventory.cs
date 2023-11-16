@@ -74,6 +74,32 @@ public class playerInventory : MonoBehaviour
         useitem.performed += UseItem;
         item1.performed += SwapActiveQuickItem; item2.performed += SwapActiveQuickItem; item3.performed += SwapActiveQuickItem; item4.performed += SwapActiveQuickItem;
     }
+
+    // On Enable and Disable handles the input related functionality. In short, we just need to make sure that when input is no longer allowed, we actually "turn off" the recievers. 
+    private void OnEnable()
+    {
+        openMenu.Enable();
+        closeMenu.Enable();
+        scroll.Enable();
+        useitem.Enable();
+        item1.Enable();
+        item2.Enable();
+        item3.Enable();
+        item4.Enable();
+    }
+    private void OnDisable()
+    {
+        openMenu.Disable();
+        closeMenu.Disable();
+        scroll.Disable();
+        useitem.Disable();
+        item1.Disable();
+        item2.Disable();
+        item3.Disable();
+        item4.Disable();
+    }
+
+
     private void Start()
     {
         UILayer = LayerMask.NameToLayer("UI");
@@ -82,10 +108,9 @@ public class playerInventory : MonoBehaviour
 
 
         for (int i = 0; i < 4; i++)
-        {
+        {            
             quickItems.AddFirst(new ItemParent());
         }
-
 
         for(int i = 0; i < 4; i++)
         {
@@ -98,7 +123,8 @@ public class playerInventory : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
+        //Debug.Log(IsPointerOverUIElement() ? "Over UI" : "Not over UI"); Debug version for testing, same function just prints to log 
+        IsPointerOverUIElement();   
     }
 
     //Returns 'true' if we touched or hovering on Unity UI element.
@@ -178,7 +204,7 @@ public class playerInventory : MonoBehaviour
     }
 
 
-public void SetSlotId(int SlotId)
+    public void SetSlotId(int SlotId)
     {
         
         slotId = itemSlotsUI[SlotId].itemIndex;
@@ -226,30 +252,58 @@ public void SetSlotId(int SlotId)
             if(index >= items.Count)
             {
                 //Debug.Log("We have less items than we can display. Canceling the For loop");
-                break;
+                ItemParent empty = new ItemParent();
+                itemSlotsUI[i].itemIconInfo[0].sprite = empty.icon;
+                itemSlotsUI[i].itemIconInfo[1].sprite = empty.icon;
+                itemSlotsUI[i].itemIconInfo[0].color = Color.clear;
+                itemSlotsUI[i].itemIconInfo[1].color = Color.clear;
+                //Save Index 
+                itemSlotsUI[i].itemIndex = index;
+                //Update Name
+                itemSlotsUI[i].itemNameInfo[0].text = " ";
+                itemSlotsUI[i].itemNameInfo[1].text = " ";
+                //Update Description
+                itemSlotsUI[i].itemDescriptionInfo[0].text = " ";
+                itemSlotsUI[i].itemDescriptionInfo[1].text = " ";
+                //Quantity
+                itemSlotsUI[i].itemQuantityInfo.text = " ";
+                //LORE! Allegedly 
+                itemSlotsUI[i].itemLoreDescriptionInfo.text = " ";
+             
             }
-            //Update Icons
-            itemSlotsUI[i].itemIconInfo[0].sprite = items.ElementAt(index).icon;
-            itemSlotsUI[i].itemIconInfo[1].sprite = items.ElementAt(index).icon;
-            //Save Index 
-            itemSlotsUI[i].itemIndex = index;
-            //Update Name
-            itemSlotsUI[i].itemNameInfo[0].text = items.ElementAt(index).itemName;
-            itemSlotsUI[i].itemNameInfo[1].text = items.ElementAt(index).itemName;
-            //Update Description
-            itemSlotsUI[i].itemDescriptionInfo[0].text = items.ElementAt(index).itemDescription;
-            itemSlotsUI[i].itemDescriptionInfo[1].text = items.ElementAt(index).itemDescription;
-            //Quantity
-            itemSlotsUI[i].itemQuantityInfo.text = items.ElementAt(index).numOfItems.ToString();
-            //LORE! Allegedly 
-            itemSlotsUI[i].itemLoreDescriptionInfo.text = items.ElementAt(index).itemLore;
+            else
+            {
+                //Debug.Log("The items we now have are: " +items.ElementAt(index).itemName);
+                //Update Icons
+                itemSlotsUI[i].itemIconInfo[0].sprite = items.ElementAt(index).icon;
+                itemSlotsUI[i].itemIconInfo[1].sprite = items.ElementAt(index).icon;
+                itemSlotsUI[i].itemIconInfo[0].color = new Color(255, 255, 255, 255);
+                itemSlotsUI[i].itemIconInfo[1].color = new Color(255, 255, 255, 255);
+                //Save Index 
+                itemSlotsUI[i].itemIndex = index;
+                //Update Name
+                itemSlotsUI[i].itemNameInfo[0].text = items.ElementAt(index).itemName;
+                itemSlotsUI[i].itemNameInfo[1].text = items.ElementAt(index).itemName;
+                //Update Description
+                itemSlotsUI[i].itemDescriptionInfo[0].text = items.ElementAt(index).itemDescription;
+                itemSlotsUI[i].itemDescriptionInfo[1].text = items.ElementAt(index).itemDescription;
+                //Quantity
+                itemSlotsUI[i].itemQuantityInfo.text = items.ElementAt(index).numOfItems.ToString();
+                //LORE! Allegedly 
+                itemSlotsUI[i].itemLoreDescriptionInfo.text = items.ElementAt(index).itemLore;
 
-            //Rest of the lore related functionality will come when I have more time. Should be simple to setup.
+                //Rest of the lore related functionality will come when I have more time. Should be simple to setup.
+            }
+
 
             index++;
         }
     }
 
+    /// <summary>
+    /// Using the player's scroll wheel they are able to iterate through the inventory menu. 
+    /// </summary>
+    /// <param name="context"></param>
     void ScrollMenu(InputAction.CallbackContext context)
     {
 
@@ -373,37 +427,20 @@ public void SetSlotId(int SlotId)
     }
 
     /// <summary>
-    /// Method that updates the UI to match what we actually have in the inventory. 
+    /// Method that updates the Quick Item UI to match what we actually have in the inventory. 
     /// </summary>
     public void UpdateItemDisplay(int slot)
     {
-        switch(slot)
-        {
-            case 0:
-                {
-                    QuickItemSlots[0].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(0).icon;
-                    QuickItemSlots[0].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(0).numOfItems.ToString();
-                    break;
-                }
-            case 1:
-                {
-                    QuickItemSlots[1].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(1).icon;
-                    QuickItemSlots[1].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(1).numOfItems.ToString();
-                    break;
-                }
-            case 2:
-                {
-                    QuickItemSlots[2].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(2).icon;
-                    QuickItemSlots[2].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(2).numOfItems.ToString();
-                    break;  
-                }
-            case 3:
-                {
-                    QuickItemSlots[3].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(3).icon;
-                    QuickItemSlots[3].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(3).numOfItems.ToString();
-                    break;
-                }
-        }   
+        //While a for loop would make this code cleaner, I ran into an issue with them I wasn't able to figure out. So now I just manually do all the setting... 
+        QuickItemSlots[0].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(0)?.icon;
+        QuickItemSlots[0].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(0)?.numOfItems.ToString();
+        QuickItemSlots[1].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(1)?.icon;
+        QuickItemSlots[1].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(1)?.numOfItems.ToString();
+        QuickItemSlots[2].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(1)?.icon;
+        QuickItemSlots[2].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(2)?.numOfItems.ToString();
+        QuickItemSlots[3].gameObject.GetComponentsInChildren<Image>()[1].sprite = quickItems.ElementAt(1)?.icon;
+        QuickItemSlots[3].gameObject.GetComponentInChildren<Text>().text = quickItems.ElementAt(3)?.numOfItems.ToString();
+
     }
 
 
@@ -483,6 +520,7 @@ public void SetSlotId(int SlotId)
         {
             Time.timeScale = 0;
             menu.SetActive(true);
+            RefreshDisplayedItems(0);
             playerInput.SwitchCurrentActionMap("UI");
             Debug.Log(playerInput.currentActionMap);
         }

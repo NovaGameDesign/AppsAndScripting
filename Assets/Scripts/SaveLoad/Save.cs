@@ -14,12 +14,13 @@ public class Save
     [Header("Health and Inventory")]
     public float playerHealth;
 
-    public List<ItemParent> items = new List<ItemParent>();
-    public List<ItemParent> quickItems = new List<ItemParent>();
+    public LinkedList<ItemParent> items = new LinkedList<ItemParent>();
+    public LinkedList<ItemParent> quickItems = new LinkedList<ItemParent>();
 
     [Header("Enemy Information")]
     public List<float> enemyPositionX = new List<float>();
     public List<float> enemyPositionY = new List<float>();
     public List<float> enemyPositionZ = new List<float>();
+    public List<int> enemyId = new List<int>();
     public List<bool> enemyStillAlive = new List<bool>();
 }

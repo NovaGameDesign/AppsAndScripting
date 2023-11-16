@@ -47,4 +47,11 @@ public class S_CharacterStats : MonoBehaviour
         else
             StartCoroutine(RegnerateHealth());
     }
+
+    public void SetHealth(float healthValue)
+    {
+        health = healthValue;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        healthbar.value = health / maxHealth;
+    }
 }
