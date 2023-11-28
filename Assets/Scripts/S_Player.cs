@@ -16,7 +16,7 @@ public class S_Player : MonoBehaviour
     private Vector3 playerVelocity;
     private Vector3 playerRotation;
     [SerializeField] float playerSpeed = 2.0f;
-    [SerializeField] float mouseSensitivity = 1f;
+    [SerializeField] public float mouseSensitivity = 1f;
     [SerializeField] GameObject stepRayLower;
     [SerializeField] GameObject stepRayUpper;
     [SerializeField] float stepSmooth = .1f;
