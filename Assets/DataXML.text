@@ -1,28 +1,48 @@
 <saved>
-  <PlayerHealth>100</PlayerHealth>
-  <PlayerPositionX>841.685</PlayerPositionX>
+  <PlayerHealth>62</PlayerHealth>
+  <PlayerPositionX>848.4999</PlayerPositionX>
   <PlayerPositionY>76.31</PlayerPositionY>
-  <PlayerPositionZ>307.0301</PlayerPositionZ>
-  <Item>Battery Cell</Item>
-  <Item>Nuclear Cell</Item>
+  <PlayerPositionZ>310.8647</PlayerPositionZ>
   <Item>Item_Pistol</Item>
+  <Item>Item_Rifle</Item>
   <Item>Item_Shotgun</Item>
   <QuickItem>Item_Pistol</QuickItem>
-  <QuickItem>Null</QuickItem>
-  <QuickItem>Null</QuickItem>
-  <QuickItem>Null</QuickItem>
+  <QuickItem>GameObject (1)</QuickItem>
+  <QuickItem>Item_Rifle</QuickItem>
+  <QuickItem>Item_Shotgun</QuickItem>
   <Enemy>
-    <EnemyPositionX>841</EnemyPositionX>
-    <EnemyPositionY>75.91657</EnemyPositionY>
-    <EnemyPositionZ>289.1936</EnemyPositionZ>
+    <EnemyPositionX>967.8813</EnemyPositionX>
+    <EnemyPositionY>37.33325</EnemyPositionY>
+    <EnemyPositionZ>303.4014</EnemyPositionZ>
     <EnemyIsAlive>True</EnemyIsAlive>
-    <EnemyID>1111111112</EnemyID>
+    <EnemyID>0</EnemyID>
   </Enemy>
   <Enemy>
-    <EnemyPositionX>893.2</EnemyPositionX>
-    <EnemyPositionY>63.83324</EnemyPositionY>
-    <EnemyPositionZ>262</EnemyPositionZ>
+    <EnemyPositionX>910.6667</EnemyPositionX>
+    <EnemyPositionY>24.66659</EnemyPositionY>
+    <EnemyPositionZ>270.0993</EnemyPositionZ>
     <EnemyIsAlive>True</EnemyIsAlive>
-    <EnemyID>1111111113</EnemyID>
+    <EnemyID>1111111111</EnemyID>
+  </Enemy>
+  <Enemy>
+    <EnemyPositionX>910.6667</EnemyPositionX>
+    <EnemyPositionY>24.66658</EnemyPositionY>
+    <EnemyPositionZ>267.5993</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+    <EnemyID>1111111111</EnemyID>
+  </Enemy>
+  <Enemy>
+    <EnemyPositionX>904.8333</EnemyPositionX>
+    <EnemyPositionY>24.33325</EnemyPositionY>
+    <EnemyPositionZ>302.2659</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+    <EnemyID>1111111111</EnemyID>
+  </Enemy>
+  <Enemy>
+    <EnemyPositionX>942.546</EnemyPositionX>
+    <EnemyPositionY>31.72966</EnemyPositionY>
+    <EnemyPositionZ>319.248</EnemyPositionZ>
+    <EnemyIsAlive>True</EnemyIsAlive>
+    <EnemyID>0</EnemyID>
   </Enemy>
 </saved>

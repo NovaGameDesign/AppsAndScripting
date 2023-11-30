@@ -17,6 +17,7 @@ public enum ItemType
 
 public class ItemParent : MonoBehaviour
 {
+    [Header("Item Info")]
     public int numOfItems = 0;
     /// <summary>
     /// What we use in code to detect if the item already exists in the inventory. 
@@ -36,7 +37,10 @@ public class ItemParent : MonoBehaviour
     //Ui    
     public Sprite icon = null;
 
-
+    public AudioSource itemSFX = null;
+    public bool inInventory = false;
+    public float timeDelay;
+    [System.NonSerialized] public bool canUse = true;
     public virtual void UseItem(Transform transform = null) { }
    
     private void Awake()
@@ -49,6 +53,10 @@ public class ItemParent : MonoBehaviour
     }
     private void Update()
     {
-        transform.RotateAround(transform.position, Vector3.up, 100 * Time.deltaTime);
+        if(!inInventory)
+        {
+            transform.RotateAround(transform.position, Vector3.up, 100 * Time.deltaTime);
+        }
+        
     }
 }

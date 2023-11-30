@@ -171,7 +171,7 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeMouseSpeed(Slider speed)
     {
-        GameObject.Find("Player").GetComponent<S_Player>().mouseSensitivity = speed.value;
+        //GameObject.Find("Player").GetComponent<S_Player>().mouseSensitivity = speed.value;
         PlayerPrefs.SetFloat("Mouse Speed", speed.value);
     }
 

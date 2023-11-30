@@ -7,14 +7,18 @@ public class MachineGun : ItemParent
     public GameObject bullets;
     public override void UseItem(Transform _transform = null) 
     {
-        GameObject gameoject = Instantiate(bullets, (2*_transform.forward) + _transform.position, _transform.rotation);
-        //StartCoroutine(wait(_transform));
-        
+        if(canUse)
+        {
+            GameObject gameoject = Instantiate(bullets, (2 * _transform.forward) + _transform.position, _transform.rotation);
+            itemSFX.Play();
+            canUse = false;
+            StartCoroutine(useDelay());
+        }    
     }
 
-    public IEnumerator wait(Transform _transform)
+    public IEnumerator useDelay()
     {
-        yield return new WaitForSeconds(.5f);
-        GameObject gameoject2 = Instantiate(bullets, _transform.forward + _transform.position, _transform.rotation);
+        yield return new WaitForSeconds(timeDelay);
+        canUse = true;
     }
 }

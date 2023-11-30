@@ -6,7 +6,7 @@ While in the menu the player can swap pages with the header navigation located a
 	1. Inventory Page: players can select from the Quick Items to choose a new quick item. Only the four panes on the right currently work, in the future I'll add weapon and armor specific tabs. 
 	2. Items page: players can look at their current items -- while in this page using the scroll wheel will cycle through the displayed items. 
 	3. Stats Page: coming soon! 
-	4. Settings Page: This page allows users to rebind keys, or change their current keybind layout which allows players to swap from keyboard to controller. 
+	4. Settings Page: This page allows users to rebind keys, or change their current keybind layout which allows players to swap from keyboard to controller. Go to the menu and save game. 
 
 Across the game there are a few key items the player can obtain, three guns and three heals. The three guns are the pistol, machinegune, and shotgun. Each has their own unique bullet firing pattern. 
 The weapons can be equipped via the quick items panels in the inventory. Players can cycle through their currently selected quick item with the 1,2,3,4 key. 
@@ -16,3 +16,9 @@ In the case of consumable items, such as the Battery Cell (a heal) using them wi
 
 There are two enemies in the game. The first enemy will be idle until the player gets within 10 units, it will then begin to chase the player, shooting if it gets within 5 units. 
 The second enemy uses waypoints to traverse the map and will chase the player if they get within 5 units, using a melee attack if they get within 2. 
+
+With version 3 of this project users can also save and load their game progress. Games can be saved under the settings tab of the inventory. Data saved includes: inventory, quick items, and enemys remaining. 
+
+The player's goal (though there is no offical win state) is to reach the top of the lab/factor and go outside. It should be pretty obvious once your there!
+
+Lastly players can change their settings on the main menu including camera speed, volume, shadow resolution, screen size, and display type.  

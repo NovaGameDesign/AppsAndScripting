@@ -191,21 +191,21 @@ public class S_Player : MonoBehaviour
     {
         if (inventory.quickItems.ElementAt(0).isActive == true & inventory.quickItems.ElementAt(0).itemId != null & inventory.quickItems.ElementAt(0).type == ItemType.weapon)
         {
-            inventory.quickItems.ElementAt(0).UseItem(transform);
+            inventory.quickItems.ElementAt(0).UseItem(Camera.main.transform);
         }
         else if (inventory.quickItems.ElementAt(1).isActive == true & inventory.quickItems.ElementAt(1).itemId != null & inventory.quickItems.ElementAt(1).type == ItemType.weapon)
         {
-            inventory.quickItems.ElementAt(1).UseItem(transform);
+            inventory.quickItems.ElementAt(1).UseItem(Camera.main.transform);
       
         }
         else if (inventory.quickItems.ElementAt(2).isActive == true & inventory.quickItems.ElementAt(2).itemId != null & inventory.quickItems.ElementAt(2).type == ItemType.weapon)
         {
-            inventory.quickItems.ElementAt(2).UseItem(transform);
+            inventory.quickItems.ElementAt(2).UseItem(Camera.main.transform);
        
         }
         else if (inventory.quickItems.ElementAt(3).isActive == true & inventory.quickItems.ElementAt(3).itemId != null & inventory.quickItems.ElementAt(3).type == ItemType.weapon)
         {
-            inventory.quickItems.ElementAt(3).UseItem(transform);
+            inventory.quickItems.ElementAt(3).UseItem(Camera.main.transform);
         }
         /*else 
             Debug.Log("No Item Selected");*/    
